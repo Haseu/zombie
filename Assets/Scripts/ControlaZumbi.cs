@@ -22,8 +22,17 @@ public class ControlaZumbi : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        Vector3 direcao = jogador.transform.position - transform.position;
+        
 
-         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * speed * Time.deltaTime));
-    }
+        float distancia = Vector3.Distance(transform.position, jogador.transform.position);
+
+        if (distancia > 2.5) 
+        {
+            Vector3 direcao = jogador.transform.position - transform.position;
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * speed * Time.deltaTime));        
+
+            Quaternion rotacao = Quaternion.LookRotation(direcao);
+            GetComponent<Rigidbody>().MoveRotation(rotacao);
+        }
+    }   
 }
