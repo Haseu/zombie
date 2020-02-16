@@ -22,8 +22,6 @@ public class ControlaZumbi : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        
-
         float distancia = Vector3.Distance(transform.position, jogador.transform.position);
         Vector3 direcao = jogador.transform.position - transform.position;
 
@@ -39,5 +37,12 @@ public class ControlaZumbi : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("atacando", true);
         }
+    }
+
+    public void atacaJogador()
+    {
+        Time.timeScale = 0;
+        jogador.GetComponent<ControlaJogador>().gameOver.SetActive(true);
+        jogador.GetComponent<ControlaJogador>().vida.SetActive(false);
     }   
 }
