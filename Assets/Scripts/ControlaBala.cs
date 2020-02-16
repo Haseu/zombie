@@ -8,4 +8,9 @@ public class ControlaBala : MonoBehaviour
     private void FixedUpdate() {
         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (transform.forward * velocidade * Time.deltaTime));
     }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+            
+    }
 }
