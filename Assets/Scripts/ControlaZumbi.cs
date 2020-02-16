@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ControlaZumbi : MonoBehaviour
 {
-    public int speed = 5; 
+    public int velocidade = 5; 
     public GameObject jogador;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        jogador = GameObject.FindWithTag("Jogador");
+        int gerTipoZumbi = Random.Range(1,28);
+        transform.GetChild(gerTipoZumbi).gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class ControlaZumbi : MonoBehaviour
 
         if (distancia > 2.5) 
         {            
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * speed * Time.deltaTime));  
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * velocidade * Time.deltaTime));  
             GetComponent<Animator>().SetBool("atacando", false);                  
         }
         else 
@@ -43,6 +45,6 @@ public class ControlaZumbi : MonoBehaviour
     {
         Time.timeScale = 0;
         jogador.GetComponent<ControlaJogador>().gameOver.SetActive(true);
-        jogador.GetComponent<ControlaJogador>().vida.SetActive(false);
+        jogador.GetComponent<ControlaJogador>().vida = false;
     }   
 }
