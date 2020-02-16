@@ -25,14 +25,19 @@ public class ControlaZumbi : MonoBehaviour
         
 
         float distancia = Vector3.Distance(transform.position, jogador.transform.position);
+        Vector3 direcao = jogador.transform.position - transform.position;
+
+        Quaternion rotacao = Quaternion.LookRotation(direcao);
+            GetComponent<Rigidbody>().MoveRotation(rotacao);
 
         if (distancia > 2.5) 
+        {            
+            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * speed * Time.deltaTime));  
+            GetComponent<Animator>().SetBool("atacando", false);                  
+        }
+        else 
         {
-            Vector3 direcao = jogador.transform.position - transform.position;
-            GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao.normalized * speed * Time.deltaTime));        
-
-            Quaternion rotacao = Quaternion.LookRotation(direcao);
-            GetComponent<Rigidbody>().MoveRotation(rotacao);
+            GetComponent<Animator>().SetBool("atacando", true);
         }
     }   
 }
