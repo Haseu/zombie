@@ -11,6 +11,10 @@ public class ControlaBala : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-            
+        if(other.tag == "Inimigo"){
+            Destroy(other.gameObject);
+        }
+
+        Destroy(gameObject);
     }
 }
