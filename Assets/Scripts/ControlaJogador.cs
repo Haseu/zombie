@@ -5,15 +5,14 @@ using UnityEngine;
 public class ControlaJogador : MonoBehaviour
 {
     public int speed = 10; 
+    private Vector3 direcao;
     // Update is called once per frame
     void Update()
     {
         float eixoX = Input.GetAxis("Horizontal");
         float eixoZ = Input.GetAxis("Vertical");
 
-        Vector3 direcao = new Vector3(eixoX, 0, eixoZ);
-
-        transform.Translate(direcao * speed * Time.deltaTime);     
+        direcao = new Vector3(eixoX, 0, eixoZ);       
 
         if (direcao != Vector3.zero)
         {
@@ -23,5 +22,10 @@ public class ControlaJogador : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("Movendo", false);
         }
+    }
+
+    private void FixedUpdate() 
+    {
+         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao * speed * Time.deltaTime));    
     }
 }
