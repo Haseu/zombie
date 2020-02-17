@@ -13,6 +13,7 @@ public class ControlaJogador : MonoBehaviour
     private Rigidbody cRigidbody;
     private Animator cAnimator;
     public int saude = 100;
+    public ControlaInterface controlaInterface;
 
     private void Start() {
         Time.timeScale = 1;
@@ -71,6 +72,7 @@ public class ControlaJogador : MonoBehaviour
     public void causaDano(int dano)
     {
         saude -= dano;
+        controlaInterface.atualizarSaude();
         if(saude <= 0) 
         {
             Time.timeScale = 0;
