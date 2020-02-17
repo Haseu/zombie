@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Motel.unity
+    guid: fd7ed834c2457f0479c76bba4c63978a
   m_configObjects: {}
