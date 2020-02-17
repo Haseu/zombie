@@ -9,11 +9,11 @@ public class ControlaJogador : MonoBehaviour
     private Vector3 direcao;
     public LayerMask mascaraChao;
     public GameObject gameOver;
-
     private Rigidbody cRigidbody;
     private Animator cAnimator;
     public int saude = 100;
     public ControlaInterface controlaInterface;
+    public AudioClip somDano;
 
     private void Start() {
         Time.timeScale = 1;
@@ -73,6 +73,8 @@ public class ControlaJogador : MonoBehaviour
     {
         saude -= dano;
         controlaInterface.atualizarSaude();
+        ControlaAudio.instancia.PlayOneShot(somDano);
+
         if(saude <= 0) 
         {
             Time.timeScale = 0;
