@@ -41,8 +41,7 @@ public class ControlaZumbi : MonoBehaviour
 
     public void atacaJogador()
     {
-        Time.timeScale = 0;
-        jogador.GetComponent<ControlaJogador>().gameOver.SetActive(true);
-        jogador.GetComponent<ControlaJogador>().vida = false;
+        int dano = Random.Range(1,30);
+        jogador.GetComponent<ControlaJogador>().causaDano(dano);
     }   
 }

@@ -12,7 +12,7 @@ public class ControlaJogador : MonoBehaviour
 
     private Rigidbody cRigidbody;
     private Animator cAnimator;
-    public bool vida = true;
+    public int saude = 100;
 
     private void Start() {
         Time.timeScale = 1;
@@ -37,7 +37,7 @@ public class ControlaJogador : MonoBehaviour
             cAnimator.SetBool("Movendo", false);
         }
 
-        if (vida == false)
+        if (saude <= 0)
         {
             if(Input.GetButtonDown("Fire1"))
             {
@@ -66,5 +66,15 @@ public class ControlaJogador : MonoBehaviour
          }
 
 
+    }
+
+    public void causaDano(int dano)
+    {
+        saude -= dano;
+        if(saude <= 0) 
+        {
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+        }
     }
 }
