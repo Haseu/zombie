@@ -12,13 +12,14 @@ public class ControlaInterface : MonoBehaviour
     void Start()
     {
         jogador = GameObject.FindWithTag("Jogador").GetComponent<ControlaJogador>();
-        saude.maxValue = 100;
+        saude.maxValue = jogador.saude;
+        atualizarSaude();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     public void atualizarSaude() 
