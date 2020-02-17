@@ -9,10 +9,15 @@ public class ControlaJogador : MonoBehaviour
     private Vector3 direcao;
     public LayerMask mascaraChao;
     public GameObject gameOver;
+
+    private Rigidbody cRigidbody;
+    private Animator cAnimator;
     public bool vida = true;
 
     private void Start() {
         Time.timeScale = 1;
+        cRigidbody = GetComponent<Rigidbody>();
+        cAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,11 +30,11 @@ public class ControlaJogador : MonoBehaviour
 
         if (direcao != Vector3.zero)
         {
-            GetComponent<Animator>().SetBool("Movendo", true);
+            cAnimator.SetBool("Movendo", true);
         }   
         else
         {
-            GetComponent<Animator>().SetBool("Movendo", false);
+            cAnimator.SetBool("Movendo", false);
         }
 
         if (vida == false)
@@ -43,7 +48,7 @@ public class ControlaJogador : MonoBehaviour
 
     private void FixedUpdate() 
     {
-         GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (direcao * speed * Time.deltaTime));    
+         cRigidbody.MovePosition(cRigidbody.position + (direcao * speed * Time.deltaTime));    
 
          Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
          Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
@@ -57,7 +62,7 @@ public class ControlaJogador : MonoBehaviour
 
             Quaternion rotacao = Quaternion.LookRotation(posicaoMira);
 
-            GetComponent<Rigidbody>().MoveRotation(rotacao);
+            cRigidbody.MoveRotation(rotacao);
          }
 
 

@@ -5,8 +5,14 @@ using UnityEngine;
 public class ControlaBala : MonoBehaviour
 {
     public float velocidade = 20;
+    private Rigidbody cRigidbody;
+
+    private void Start() {
+        cRigidbody = GetComponent<Rigidbody>();
+    }
+
     private void FixedUpdate() {
-        GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + (transform.forward * velocidade * Time.deltaTime));
+        cRigidbody.MovePosition(cRigidbody.position + (transform.forward * velocidade * Time.deltaTime));
     }
 
     private void OnTriggerEnter(Collider other) 
