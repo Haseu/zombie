@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour, IDano
 {
@@ -29,15 +28,7 @@ public class ControlaJogador : MonoBehaviour, IDano
 
         direcao = new Vector3(eixoX, 0, eixoZ);       
 
-        animacaoBehaviour.movimentar(direcao.magnitude);
-
-        if (status.vida <= 0)
-        {
-            if(Input.GetButtonDown("Fire1"))
-            {
-                SceneManager.LoadScene("Motel");
-            }
-        }
+        animacaoBehaviour.movimentar(direcao.magnitude);   
     }
 
     private void FixedUpdate() 
@@ -60,7 +51,6 @@ public class ControlaJogador : MonoBehaviour, IDano
 
     public void morrer()
     {
-            Time.timeScale = 0;
-            gameOver.SetActive(true);
+            controlaInterface.gameOver();
     }
 }
