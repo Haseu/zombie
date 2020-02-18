@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControlaJogador : MonoBehaviour, IDano
+public class ControlaJogador : MonoBehaviour, IDano, ICura
 {
     private Vector3 direcao;
     public LayerMask mascaraChao;
@@ -52,5 +52,15 @@ public class ControlaJogador : MonoBehaviour, IDano
     public void morrer()
     {
             controlaInterface.gameOver();
+    }
+
+    public void cura(int quantidadeVida)
+    {
+        status.vida += quantidadeVida;
+        if (status.vida > status.vidaInicial)
+        {
+            status.vida = status.vidaInicial;
+        }
+        controlaInterface.atualizarSaude();
     }
 }

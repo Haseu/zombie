@@ -14,6 +14,8 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private Vector3 direcao;
     private float contadorPatrulha;
     private float tempoEntrePatrulha = 12;
+    private float porcentagemKitMedico = 0.1f;
+    public GameObject kitMedico;
 
 
     // Start is called before the first frame update
@@ -112,5 +114,14 @@ public class ControlaZumbi : MonoBehaviour, IDano
     {
         Destroy(gameObject);
         ControlaAudio.instancia.PlayOneShot(somMorte);
+        this.spawnKitMedico(porcentagemKitMedico);
+    }
+
+    private void spawnKitMedico(float porcentagem)
+    {
+        if(Random.value <= porcentagem)
+        {
+            Instantiate(kitMedico, transform.position, Quaternion.identity);
+        }
     }
 }
