@@ -17,7 +17,7 @@ private Animator animator;
 
     public void movimentar(float valorMovimento)
     {
-         animator.SetFloat("Movendo", valorMovimento);
+         animator.SetFloat("movendo", valorMovimento);
     }
 
 }

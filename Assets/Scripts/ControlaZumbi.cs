@@ -9,6 +9,11 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private AnimacaoBehaviour animacao;
     private Status status;
     public AudioClip somMorte;
+    private Vector3 patrulha;
+    public int distancia = 10;
+    private Vector3 direcao;
+    private float contadorPatrulha;
+    private float tempoEntrePatrulha = 12;
 
 
     // Start is called before the first frame update
@@ -24,19 +29,55 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private void FixedUpdate() 
     {
         float distancia = Vector3.Distance(transform.position, jogador.transform.position);
-        Vector3 direcao = jogador.transform.position - transform.position;
-
         movimento.rotacionar(direcao);
+        animacao.movimentar(direcao.magnitude);
 
-        if (distancia > 2.5) 
-        {            
-            movimento.movimentar(direcao, status.velocidade);   
-            animacao.atacar(false);             
+        if(distancia > 15) 
+        {
+            this.vagar();    
+        }
+        else if (distancia > 2.5) 
+        {
+            this.perseguir();          
         }
         else 
         {
            animacao.atacar(true);
         }
+    }
+    //Roaming
+    private void vagar() 
+    {
+        contadorPatrulha -= Time.deltaTime;
+        if (contadorPatrulha <= 0)
+        {
+            patrulha = this.aleatorizarPosicao();
+            contadorPatrulha += tempoEntrePatrulha;
+        }
+
+        bool pertoDoPonto = Vector3.Distance(transform.position, patrulha) <= 0.05;
+        
+        if (!pertoDoPonto)
+        {
+            direcao = patrulha - transform.position;
+            movimento.movimentar(direcao, status.velocidade); 
+        }  
+    }
+
+    private void perseguir()
+    {
+            direcao = jogador.transform.position - transform.position;            
+            movimento.movimentar(direcao, status.velocidade);   
+            animacao.atacar(false);
+    }
+
+    private Vector3 aleatorizarPosicao()
+    {
+        Vector3 posicao = Random.insideUnitSphere * distancia;
+        posicao += transform.position;
+        posicao.y = transform.position.y;
+
+        return posicao;
     }
 
     public void atacaJogador()

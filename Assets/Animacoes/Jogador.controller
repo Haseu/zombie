@@ -9,7 +9,7 @@ AnimatorController:
   m_Name: Jogador
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Movendo
+  - m_Name: movendo
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -49,7 +49,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Movendo
+    m_ConditionEvent: movendo
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102539933412314408}
@@ -74,7 +74,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: Movendo
+    m_ConditionEvent: movendo
     m_EventTreshold: 0.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102655577100108444}

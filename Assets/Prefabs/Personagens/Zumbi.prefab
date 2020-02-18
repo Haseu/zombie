@@ -633,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jogador: {fileID: 0}
   somMorte: {fileID: 8300000, guid: 8c94d1b9384b8f74796cb117c92331d4, type: 3}
+  distancia: 10
 --- !u!114 &114011814153862946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaInicial: 1
   vida: 0
-  velocidade: 2
+  velocidade: 1
 --- !u!1 &1065480718027956
 GameObject:
   m_ObjectHideFlags: 0

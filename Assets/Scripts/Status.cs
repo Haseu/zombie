@@ -9,7 +9,7 @@ public class Status : MonoBehaviour
     public int vida;
     public float velocidade = 5;
 
-    private void Start() {
+    private void Awake() {
         vida = vidaInicial;
     }
 }
