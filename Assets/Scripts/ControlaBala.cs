@@ -6,7 +6,6 @@ public class ControlaBala : MonoBehaviour
 {
     public float velocidade = 20;
     private Rigidbody cRigidbody;
-    public AudioClip somMorte;
 
     private void Start() {
         cRigidbody = GetComponent<Rigidbody>();
@@ -19,8 +18,7 @@ public class ControlaBala : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         if(other.tag == "Inimigo"){
-            Destroy(other.gameObject);
-            ControlaAudio.instancia.PlayOneShot(somMorte);
+            other.GetComponent<ControlaZumbi>().dano(1);
         }
 
         Destroy(gameObject);

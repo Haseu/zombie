@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControlaJogador : MonoBehaviour
+public class ControlaJogador : MonoBehaviour, IDano
 {
     private Vector3 direcao;
     public LayerMask mascaraChao;
@@ -46,7 +46,7 @@ public class ControlaJogador : MonoBehaviour
         playerBehaviour.rotacao(mascaraChao);
     }
 
-    public void causaDano(int dano)
+    public void dano(int dano)
     {
         status.vida -= dano;
         controlaInterface.atualizarSaude();
@@ -54,8 +54,13 @@ public class ControlaJogador : MonoBehaviour
 
         if(status.vida <= 0) 
         {
+           this.morrer();
+        }
+    }
+
+    public void morrer()
+    {
             Time.timeScale = 0;
             gameOver.SetActive(true);
-        }
     }
 }
