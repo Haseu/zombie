@@ -12,7 +12,7 @@ public class ControlaInterface : MonoBehaviour
     void Start()
     {
         jogador = GameObject.FindWithTag("Jogador").GetComponent<ControlaJogador>();
-        saude.maxValue = jogador.saude;
+        saude.maxValue = jogador.status.vida;
         atualizarSaude();
     }
 
@@ -24,6 +24,6 @@ public class ControlaInterface : MonoBehaviour
 
     public void atualizarSaude() 
     {
-        saude.value = jogador.saude;
+        saude.value = jogador.status.vida;
     }
 }

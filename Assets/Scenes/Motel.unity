@@ -1022,12 +1022,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 585032167}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &111069185 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4610746654156704, guid: 4b3bb44effa49480d8d18049684cc33a,
-    type: 3}
-  m_PrefabInstance: {fileID: 585032167}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &142765157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2218,36 +2212,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 361730152}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &371874001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 371874002}
-  m_Layer: 0
-  m_Name: CanoDaArma
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &371874002
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371874001}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.048, y: 2.088, z: 1.966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 111069185}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &373820838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3607,10 +3571,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 111069181, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: mascaraChao.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 111069181, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 729171637}
@@ -3618,16 +3578,8 @@ PrefabInstance:
       propertyPath: controlaInterface
       value: 
       objectReference: {fileID: 1807576607}
-    - target: {fileID: 111069181, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: somDano
-      value: 
-      objectReference: {fileID: 8300000, guid: fe34d07335ec6244c8e65a10ad7d6459, type: 3}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Name
-      value: Jogador
-      objectReference: {fileID: 0}
-    - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: m_TagString
       value: Jogador
       objectReference: {fileID: 0}
     - target: {fileID: 4610746654156704, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
@@ -3674,22 +3626,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 453633329010307647, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: bala
-      value: 
-      objectReference: {fileID: 1485039247012271610, guid: e3ce4659d3f3d9549b71d3fd7c4803e5,
-        type: 3}
-    - target: {fileID: 453633329010307647, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: canoDaArma
-      value: 
-      objectReference: {fileID: 371874001}
-    - target: {fileID: 453633329010307647, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: somTiro
-      value: 
-      objectReference: {fileID: 8300000, guid: b4f2392340cc7e043a1ceeaa88f648f8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
 --- !u!1001 &601962414

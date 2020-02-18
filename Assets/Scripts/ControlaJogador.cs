@@ -5,20 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class ControlaJogador : MonoBehaviour
 {
-    public int speed = 10; 
     private Vector3 direcao;
     public LayerMask mascaraChao;
     public GameObject gameOver;
-    public int saude = 100;
     public ControlaInterface controlaInterface;
     public AudioClip somDano;
     private PlayerBehaviour playerBehaviour;
     private AnimacaoBehaviour animacaoBehaviour;
+    public Status status;
 
     private void Start() {
         Time.timeScale = 1;
         playerBehaviour = GetComponent<PlayerBehaviour>();
         animacaoBehaviour = GetComponent<AnimacaoBehaviour>();
+        status = GetComponent<Status>();
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class ControlaJogador : MonoBehaviour
 
         animacaoBehaviour.movimentar(direcao.magnitude);
 
-        if (saude <= 0)
+        if (status.vida <= 0)
         {
             if(Input.GetButtonDown("Fire1"))
             {
@@ -42,17 +42,17 @@ public class ControlaJogador : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        playerBehaviour.movimentar(direcao, speed);
+        playerBehaviour.movimentar(direcao, status.velocidade);
         playerBehaviour.rotacao(mascaraChao);
     }
 
     public void causaDano(int dano)
     {
-        saude -= dano;
+        status.vida -= dano;
         controlaInterface.atualizarSaude();
         ControlaAudio.instancia.PlayOneShot(somDano);
 
-        if(saude <= 0) 
+        if(status.vida <= 0) 
         {
             Time.timeScale = 0;
             gameOver.SetActive(true);

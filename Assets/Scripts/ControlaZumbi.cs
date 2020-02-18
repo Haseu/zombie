@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ControlaZumbi : MonoBehaviour
 {
-    public int velocidade = 5; 
     public GameObject jogador;
     private MovimentoBehaviour movimento;
     private AnimacaoBehaviour animacao;
+    private Status status;
 
 
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class ControlaZumbi : MonoBehaviour
         this.spawnZumbi();
         movimento = GetComponent<MovimentoBehaviour>();
         animacao = GetComponent<AnimacaoBehaviour>();
+        status = GetComponent<Status>();
     }
 
     private void FixedUpdate() 
@@ -28,7 +29,7 @@ public class ControlaZumbi : MonoBehaviour
 
         if (distancia > 2.5) 
         {            
-            movimento.movimentar(direcao, velocidade);   
+            movimento.movimentar(direcao, status.velocidade);   
             animacao.atacar(false);             
         }
         else 
