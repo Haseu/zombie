@@ -42,7 +42,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
         }
         else 
         {
-           animacao.atacar(true);
+            this.atacar();           
         }
     }
     //Roaming
@@ -66,9 +66,15 @@ public class ControlaZumbi : MonoBehaviour, IDano
 
     private void perseguir()
     {
-            direcao = jogador.transform.position - transform.position;            
-            movimento.movimentar(direcao, status.velocidade);   
-            animacao.atacar(false);
+        direcao = jogador.transform.position - transform.position;            
+        movimento.movimentar(direcao, status.velocidade);   
+        animacao.atacar(false);
+    }
+
+    private void atacar() 
+    {
+        direcao = jogador.transform.position - transform.position;
+        animacao.atacar(true);
     }
 
     private Vector3 aleatorizarPosicao()

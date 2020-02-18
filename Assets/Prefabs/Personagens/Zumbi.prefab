@@ -535,8 +535,8 @@ GameObject:
   - component: {fileID: 7540938245196181642}
   - component: {fileID: 114011814153862946}
   - component: {fileID: 114534155958648046}
-  - component: {fileID: 7744861884290682338}
   - component: {fileID: 86078911000673409}
+  - component: {fileID: 7744861884290682338}
   m_Layer: 9
   m_Name: Zumbi
   m_TagString: Inimigo
@@ -633,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jogador: {fileID: 0}
   somMorte: {fileID: 8300000, guid: 8c94d1b9384b8f74796cb117c92331d4, type: 3}
+  somZumbi: {fileID: 8300000, guid: 5c2be59b0aeb3ab4a99368b8e20c29b7, type: 3}
   distancia: 10
 --- !u!114 &114011814153862946
 MonoBehaviour:
@@ -658,6 +659,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7199a6eb68900f4bb9e4ce832b8ba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &86078911000673409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b84722efba9c044fba6f7a76c1d0a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaInicial: 2
+  vida: 0
+  velocidade: 1.5
 --- !u!54 &7744861884290682338
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -674,21 +690,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &86078911000673409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063500868937916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b84722efba9c044fba6f7a76c1d0a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaInicial: 1
-  vida: 0
-  velocidade: 1
 --- !u!1 &1065480718027956
 GameObject:
   m_ObjectHideFlags: 0

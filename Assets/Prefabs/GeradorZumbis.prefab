@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zumbi: {fileID: 1063500868937916, guid: 35861510587b7489780fe86970823679, type: 3}
-  tempoGerar: 3
+  tempoGerar: 2.5
   layerZumbi:
     serializedVersion: 2
     m_Bits: 512
