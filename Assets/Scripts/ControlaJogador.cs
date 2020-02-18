@@ -9,16 +9,16 @@ public class ControlaJogador : MonoBehaviour
     private Vector3 direcao;
     public LayerMask mascaraChao;
     public GameObject gameOver;
-    private Rigidbody cRigidbody;
-    private Animator cAnimator;
     public int saude = 100;
     public ControlaInterface controlaInterface;
     public AudioClip somDano;
+    private PlayerBehaviour playerBehaviour;
+    private AnimacaoBehaviour animacaoBehaviour;
 
     private void Start() {
         Time.timeScale = 1;
-        cRigidbody = GetComponent<Rigidbody>();
-        cAnimator = GetComponent<Animator>();
+        playerBehaviour = GetComponent<PlayerBehaviour>();
+        animacaoBehaviour = GetComponent<AnimacaoBehaviour>();
     }
 
     // Update is called once per frame
@@ -29,14 +29,7 @@ public class ControlaJogador : MonoBehaviour
 
         direcao = new Vector3(eixoX, 0, eixoZ);       
 
-        if (direcao != Vector3.zero)
-        {
-            cAnimator.SetBool("Movendo", true);
-        }   
-        else
-        {
-            cAnimator.SetBool("Movendo", false);
-        }
+        animacaoBehaviour.movimentar(direcao.magnitude);
 
         if (saude <= 0)
         {
@@ -49,24 +42,8 @@ public class ControlaJogador : MonoBehaviour
 
     private void FixedUpdate() 
     {
-         cRigidbody.MovePosition(cRigidbody.position + (direcao * speed * Time.deltaTime));    
-
-         Ray raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-         Debug.DrawRay(raio.origin, raio.direction * 100, Color.red);
-
-         RaycastHit impacto;
-
-         if (Physics.Raycast(raio, out impacto, 100, mascaraChao))
-         {
-            Vector3 posicaoMira = impacto.point - transform.position;
-            posicaoMira.y = transform.position.y;
-
-            Quaternion rotacao = Quaternion.LookRotation(posicaoMira);
-
-            cRigidbody.MoveRotation(rotacao);
-         }
-
-
+        playerBehaviour.movimentar(direcao, speed);
+        playerBehaviour.rotacao(mascaraChao);
     }
 
     public void causaDano(int dano)

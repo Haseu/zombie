@@ -533,6 +533,8 @@ GameObject:
   - component: {fileID: 7663726412335772031}
   - component: {fileID: 63792369}
   - component: {fileID: 7540938245196181642}
+  - component: {fileID: 114011814153862946}
+  - component: {fileID: 114534155958648046}
   - component: {fileID: 7744861884290682338}
   m_Layer: 0
   m_Name: Zumbi
@@ -630,6 +632,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 3
   jogador: {fileID: 0}
+--- !u!114 &114011814153862946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4884d05f903c34648a57ac74a93d2fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114534155958648046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063500868937916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7199a6eb68900f4bb9e4ce832b8ba4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7744861884290682338
 Rigidbody:
   m_ObjectHideFlags: 0

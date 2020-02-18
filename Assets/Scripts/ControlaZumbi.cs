@@ -6,18 +6,17 @@ public class ControlaZumbi : MonoBehaviour
 {
     public int velocidade = 5; 
     public GameObject jogador;
-    private Rigidbody cRigidbody;
-    private Animator cAnimator;
+    private MovimentoBehaviour movimento;
+    private AnimacaoBehaviour animacao;
 
 
     // Start is called before the first frame update
     void Start()
     {
         jogador = GameObject.FindWithTag("Jogador");
-        int gerTipoZumbi = Random.Range(1,28);
-        transform.GetChild(gerTipoZumbi).gameObject.SetActive(true);
-        cRigidbody = GetComponent<Rigidbody>();
-        cAnimator = GetComponent<Animator>();
+        this.spawnZumbi();
+        movimento = GetComponent<MovimentoBehaviour>();
+        animacao = GetComponent<AnimacaoBehaviour>();
     }
 
     private void FixedUpdate() 
@@ -25,17 +24,16 @@ public class ControlaZumbi : MonoBehaviour
         float distancia = Vector3.Distance(transform.position, jogador.transform.position);
         Vector3 direcao = jogador.transform.position - transform.position;
 
-        Quaternion rotacao = Quaternion.LookRotation(direcao);
-            cRigidbody.MoveRotation(rotacao);
+        movimento.rotacionar(direcao);
 
         if (distancia > 2.5) 
         {            
-            cRigidbody.MovePosition(cRigidbody.position + (direcao.normalized * velocidade * Time.deltaTime));  
-            cAnimator.SetBool("atacando", false);                  
+            movimento.movimentar(direcao, velocidade);   
+            animacao.atacar(false);             
         }
         else 
         {
-           cAnimator.SetBool("atacando", true);
+           animacao.atacar(true);
         }
     }
 
@@ -44,4 +42,10 @@ public class ControlaZumbi : MonoBehaviour
         int dano = Random.Range(1,30);
         jogador.GetComponent<ControlaJogador>().causaDano(dano);
     }   
+
+    private void spawnZumbi()
+    {
+        int gerTipoZumbi = Random.Range(1,28);
+        transform.GetChild(gerTipoZumbi).gameObject.SetActive(true);
+    }
 }
