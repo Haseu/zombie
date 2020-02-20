@@ -20,4 +20,12 @@ public class MovimentoBehaviour : MonoBehaviour
         Quaternion rotacao = Quaternion.LookRotation(direcao);
             rigidbody.MoveRotation(rotacao);
     }
+
+    public IEnumerator morrer()
+    {
+        rigidbody.constraints = RigidbodyConstraints.None;
+        rigidbody.velocity = Vector3.zero;
+        yield return new WaitForSeconds(1.5f);
+        GetComponent<Collider>().enabled = false;
+    }
 }

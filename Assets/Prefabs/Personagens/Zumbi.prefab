@@ -635,6 +635,7 @@ MonoBehaviour:
   somMorte: {fileID: 8300000, guid: 8c94d1b9384b8f74796cb117c92331d4, type: 3}
   distancia: 10
   kitMedico: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
+  gerador: {fileID: 0}
 --- !u!114 &114011814153862946
 MonoBehaviour:
   m_ObjectHideFlags: 0

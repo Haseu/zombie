@@ -115,11 +115,14 @@ public class ControlaZumbi : MonoBehaviour, IDano
 
     public void morrer()
     {
-        Destroy(gameObject);
+        animacao.morrer();
+        StartCoroutine(movimento.morrer());
+        this.enabled = false;
         ControlaAudio.instancia.PlayOneShot(somMorte);
         this.spawnKitMedico(porcentagemKitMedico);
         controlaInterface.AtualizarQuantidadeZumbisMortos();
         gerador.diminuirQuantidadeZumbiTotal();
+        Destroy(gameObject, 7);
     }
 
     private void spawnKitMedico(float porcentagem)

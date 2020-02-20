@@ -20,4 +20,9 @@ private Animator animator;
          animator.SetFloat("movendo", valorMovimento);
     }
 
+    public void morrer()
+    {
+        animator.SetTrigger("morrer");
+    }
+
 }
