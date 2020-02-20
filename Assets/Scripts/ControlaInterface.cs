@@ -12,6 +12,8 @@ public class ControlaInterface : MonoBehaviour
     public Text textoDadosGamePlay;
     public Text textoMelhorPontuacao;
     private float tempoMaximoDeJogo;
+    private int quantidadeZumbiMortos;
+    public Text textoQuantidadeZumbisMortos;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +57,12 @@ public class ControlaInterface : MonoBehaviour
         min= (int)tempoMaximoDeJogo / 60;
         seg = (int)tempoMaximoDeJogo % 60;
         textoMelhorPontuacao.text = string.Format("Seu melhor tempo é {0}min e {1}s", min, seg);
+    }
+
+    public void AtualizarQuantidadeZumbisMortos()
+    {
+        quantidadeZumbiMortos++;
+        Debug.Log(quantidadeZumbiMortos);
+        textoQuantidadeZumbisMortos.text = string.Format("x {0}", quantidadeZumbiMortos);
     }
 }

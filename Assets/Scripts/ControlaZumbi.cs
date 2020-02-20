@@ -16,6 +16,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private float tempoEntrePatrulha = 12;
     private float porcentagemKitMedico = 0.1f;
     public GameObject kitMedico;
+    private ControlaInterface controlaInterface;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
         movimento = GetComponent<MovimentoBehaviour>();
         animacao = GetComponent<AnimacaoBehaviour>();
         status = GetComponent<Status>();
+        controlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
 
     private void FixedUpdate() 
@@ -115,6 +117,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
         Destroy(gameObject);
         ControlaAudio.instancia.PlayOneShot(somMorte);
         this.spawnKitMedico(porcentagemKitMedico);
+        controlaInterface.AtualizarQuantidadeZumbisMortos();
     }
 
     private void spawnKitMedico(float porcentagem)
