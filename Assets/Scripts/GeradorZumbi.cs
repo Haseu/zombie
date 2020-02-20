@@ -11,15 +11,23 @@ public class GeradorZumbi : MonoBehaviour
     public LayerMask layerZumbi;
     private float distanciaDoJogadorParaGeracao = 20;
     private GameObject jogador;
+    private int quantidadeMaximaZumbis = 2;
+    private int quantidadeZumbisAtual;
 
     private void Start() {
         jogador = GameObject.FindWithTag("Jogador");
+        for(int i = 0; i < quantidadeMaximaZumbis; i++)
+        {
+            StartCoroutine(this.gerarZumbi());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, jogador.transform.position) > distanciaDoJogadorParaGeracao)
+        bool podeGerarZumbisPelaDistancia = Vector3.Distance(transform.position, jogador.transform.position) > distanciaDoJogadorParaGeracao;
+
+        if (podeGerarZumbisPelaDistancia && quantidadeZumbisAtual < quantidadeMaximaZumbis)
         {
             contador += Time.deltaTime;
 
@@ -44,7 +52,9 @@ public class GeradorZumbi : MonoBehaviour
             yield return null;
         }
 
-        Instantiate(zumbi, posicaoCriacao, transform.rotation);
+        ControlaZumbi cZumbi = Instantiate(zumbi, posicaoCriacao, transform.rotation).GetComponent<ControlaZumbi>();
+        cZumbi.gerador = this;
+        quantidadeZumbisAtual++;
     }
 
     private Vector3 aleatorizarPosicao()
@@ -60,5 +70,10 @@ public class GeradorZumbi : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, distancia);
+    }
+
+    public void diminuirQuantidadeZumbiTotal ()
+    {
+        quantidadeZumbisAtual--;
     }
 }

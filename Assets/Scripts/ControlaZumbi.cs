@@ -17,7 +17,8 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private float porcentagemKitMedico = 0.1f;
     public GameObject kitMedico;
     private ControlaInterface controlaInterface;
-
+    [HideInInspector]
+    public GeradorZumbi gerador;
 
     // Start is called before the first frame update
     void Start()
@@ -118,6 +119,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
         ControlaAudio.instancia.PlayOneShot(somMorte);
         this.spawnKitMedico(porcentagemKitMedico);
         controlaInterface.AtualizarQuantidadeZumbisMortos();
+        gerador.diminuirQuantidadeZumbiTotal();
     }
 
     private void spawnKitMedico(float porcentagem)
