@@ -13,9 +13,12 @@ public class GeradorZumbi : MonoBehaviour
     private GameObject jogador;
     private int quantidadeMaximaZumbis = 2;
     private int quantidadeZumbisAtual;
+    private float tempoProximoAumentoDificuldade = 20;
+    private float contadorAumentoDificulade;
 
     private void Start() {
         jogador = GameObject.FindWithTag("Jogador");
+        contadorAumentoDificulade = tempoProximoAumentoDificuldade;
         for(int i = 0; i < quantidadeMaximaZumbis; i++)
         {
             StartCoroutine(this.gerarZumbi());
@@ -36,7 +39,13 @@ public class GeradorZumbi : MonoBehaviour
             StartCoroutine(this.gerarZumbi());
             contador = 0;
             }
-        }        
+        }      
+
+        if (Time.timeSinceLevelLoad > contadorAumentoDificulade)
+        {
+            quantidadeMaximaZumbis++;
+            contadorAumentoDificulade = Time.timeSinceLevelLoad + tempoProximoAumentoDificuldade;
+        }  
     }
 
     // retorno especifico do unity para evitar frezzing em um loop
