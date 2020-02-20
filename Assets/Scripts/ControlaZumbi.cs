@@ -57,7 +57,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
         if (contadorPatrulha <= 0)
         {
             patrulha = this.aleatorizarPosicao();
-            contadorPatrulha += tempoEntrePatrulha;
+            contadorPatrulha += tempoEntrePatrulha + Random.Range(-2f, 2f);
         }
 
         bool pertoDoPonto = Vector3.Distance(transform.position, patrulha) <= 0.05;
