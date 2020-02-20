@@ -99,7 +99,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
 
     private void spawnZumbi()
     {
-        int gerTipoZumbi = Random.Range(1,28);
+        int gerTipoZumbi = Random.Range(1, transform.childCount);
         transform.GetChild(gerTipoZumbi).gameObject.SetActive(true);
     }
 

@@ -22,10 +22,11 @@ public class MovimentoBehaviour : MonoBehaviour
     }
 
     public IEnumerator morrer()
-    {
+    {   
+        rigidbody.isKinematic = false;
         rigidbody.constraints = RigidbodyConstraints.None;
         rigidbody.velocity = Vector3.zero;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f);        
         GetComponent<Collider>().enabled = false;
     }
 }

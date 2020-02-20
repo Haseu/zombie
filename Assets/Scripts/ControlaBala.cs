@@ -17,8 +17,14 @@ public class ControlaBala : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.tag == "Inimigo"){
-            other.GetComponent<ControlaZumbi>().dano(1);
+        switch(other.tag)
+        {
+            case "Inimigo":
+                other.GetComponent<ControlaZumbi>().dano(1);
+                break;
+            case "Chefe":
+                other.GetComponent<ControlaChefe>().dano(1);
+                break;
         }
 
         Destroy(gameObject);
