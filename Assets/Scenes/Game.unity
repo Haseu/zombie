@@ -19169,7 +19169,7 @@ PrefabInstance:
     - target: {fileID: 8727202508362090027, guid: d1bfaafc3cacabb4ba81341c387a97ba,
         type: 3}
       propertyPath: tempoEntreGeracao
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8727202508362090027, guid: d1bfaafc3cacabb4ba81341c387a97ba,
         type: 3}
