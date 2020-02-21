@@ -16,11 +16,23 @@ public class ControlaMenu : MonoBehaviour
 
     public void jogar()
     {
-        SceneManager.LoadScene("Game");
+        StartCoroutine(this.mudarCena("Game"));
     }    
+
+    IEnumerator mudarCena(string name)
+    {
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene(name);
+    }
 
     public void sair()
     {
+       StartCoroutine(this.fechar());
+    }
+
+    IEnumerator fechar()
+    {
+        yield return new WaitForSeconds(0.3f);
         Application.Quit();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
