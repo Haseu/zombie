@@ -1015,6 +1015,8 @@ MonoBehaviour:
   imageSlider: {fileID: 1835454649}
   corVidaMaxima: {r: 0.33333334, g: 1, b: 0.33333334, a: 1}
   corVidaMinima: {r: 1, g: 0.32941177, b: 0.32156864, a: 1}
+  particulaSangueZumbi: {fileID: 6332171793041960200, guid: 8cb8a247a8f0a874fbf110a041767947,
+    type: 3}
 --- !u!114 &114011814153862946
 MonoBehaviour:
   m_ObjectHideFlags: 0

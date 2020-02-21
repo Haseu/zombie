@@ -17,13 +17,18 @@ public class ControlaBala : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+        Quaternion rotacaoOpostaBala = Quaternion.LookRotation(-transform.forward);
         switch(other.tag)
         {
             case "Inimigo":
-                other.GetComponent<ControlaZumbi>().dano(1);
+                ControlaZumbi inimigo = other.GetComponent<ControlaZumbi>();
+                inimigo.dano(1);
+                inimigo.particulaSangue(transform.position, rotacaoOpostaBala);
                 break;
             case "Chefe":
-                other.GetComponent<ControlaChefe>().dano(1);
+                ControlaChefe chefe = other.GetComponent<ControlaChefe>();
+                chefe.dano(1);
+                chefe.particulaSangue(transform.position, rotacaoOpostaBala);
                 break;
         }
 

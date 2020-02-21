@@ -16,6 +16,7 @@ public class ControlaChefe : MonoBehaviour, IDano
     public Slider sliderVida;
     public Image imageSlider;
     public Color corVidaMaxima, corVidaMinima;
+    public GameObject particulaSangueZumbi;
 
     private void Start()
     {
@@ -64,6 +65,11 @@ public class ControlaChefe : MonoBehaviour, IDano
        {
            this.morrer();
        }
+    }
+
+    public void particulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangueZumbi, posicao, rotacao);
     }
 
     public void morrer()

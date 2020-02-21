@@ -636,6 +636,8 @@ MonoBehaviour:
   distancia: 10
   kitMedico: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a, type: 3}
   gerador: {fileID: 0}
+  particulaSangueZumbi: {fileID: 6332171793041960200, guid: 8cb8a247a8f0a874fbf110a041767947,
+    type: 3}
 --- !u!114 &114011814153862946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +677,7 @@ MonoBehaviour:
   vidaInicial: 2
   vida: 0
   velocidade: 1.5
+  vivo: 1
 --- !u!54 &7744861884290682338
 Rigidbody:
   m_ObjectHideFlags: 0

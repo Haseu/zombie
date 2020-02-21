@@ -19,6 +19,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
     private ControlaInterface controlaInterface;
     [HideInInspector]
     public GeradorZumbi gerador;
+    public GameObject particulaSangueZumbi;
 
     // Start is called before the first frame update
     void Start()
@@ -106,11 +107,15 @@ public class ControlaZumbi : MonoBehaviour, IDano
     public void dano(int dano)
     {
         status.vida -= dano;
-
         if(status.vida <= 0 && status.vivo)
         {
             this.morrer();
         }
+    }
+
+    public void particulaSangue(Vector3 posicao, Quaternion rotacao)
+    {
+        Instantiate(particulaSangueZumbi, posicao, rotacao);
     }
 
     public void morrer()
