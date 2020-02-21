@@ -14,6 +14,7 @@ public class ControlaInterface : MonoBehaviour
     private float tempoMaximoDeJogo;
     private int quantidadeZumbiMortos;
     public Text textoQuantidadeZumbisMortos;
+    public Text textoChefeAparece;
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +64,32 @@ public class ControlaInterface : MonoBehaviour
     {
         quantidadeZumbiMortos++;
         textoQuantidadeZumbisMortos.text = string.Format("x {0}", quantidadeZumbiMortos);
+    }
+
+    public void mostraTextoChefe()
+    {
+        StartCoroutine(removerTexto(2, textoChefeAparece));
+    }
+
+    
+    IEnumerator removerTexto (float tempoRemocao, Text texto)
+    {
+        texto.gameObject.SetActive(true);
+        Color corTexto = texto.color;
+        corTexto.a = 1;
+        texto.color = corTexto;
+        yield return new WaitForSeconds(1);
+        float contador = 0;
+        while(texto.color.a > 0)
+        {
+            contador += Time.deltaTime / tempoRemocao;
+            corTexto.a = Mathf.Lerp(1, 0, contador);
+            texto.color = corTexto;
+            if (texto.color.a <= 0)
+            {
+                texto.gameObject.SetActive(false);
+            }
+            yield return null;
+        }
     }
 }

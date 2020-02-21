@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System.ComponentModel;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ControlaChefe : MonoBehaviour, IDano
 {
@@ -11,6 +13,9 @@ public class ControlaChefe : MonoBehaviour, IDano
     private AnimacaoBehaviour animacao;
     private MovimentoBehaviour movimento;
     public GameObject kitMedico;
+    public Slider sliderVida;
+    public Image imageSlider;
+    public Color corVidaMaxima, corVidaMinima;
 
     private void Start()
     {
@@ -20,6 +25,8 @@ public class ControlaChefe : MonoBehaviour, IDano
         animacao = GetComponent<AnimacaoBehaviour>();
         movimento = GetComponent<MovimentoBehaviour>();
         agente.speed = status.velocidade;
+        sliderVida.maxValue = status.vidaInicial;
+        this.atualizarInterface();
     }
 
     private void Update() 
@@ -52,6 +59,7 @@ public class ControlaChefe : MonoBehaviour, IDano
     public void dano(int dano)
     {
        status.vida -= dano;
+       this.atualizarInterface();
        if (status.vida <= 0 && status.vivo) 
        {
            this.morrer();
@@ -67,5 +75,13 @@ public class ControlaChefe : MonoBehaviour, IDano
         agente.enabled = false;
         Destroy(gameObject, 4);
         Instantiate(kitMedico, transform.position, Quaternion.identity);
+    }
+
+    public void atualizarInterface()
+    {
+        sliderVida.value = status.vida;
+        float porcentagemVida = (float) status.vida / status.vidaInicial;
+        Color corVida = Color.Lerp(corVidaMinima, corVidaMaxima, porcentagemVida);
+        imageSlider.color = corVida;
     }
 }
