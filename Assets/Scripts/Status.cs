@@ -8,6 +8,7 @@ public class Status : MonoBehaviour
     [HideInInspector]
     public int vida;
     public float velocidade = 5;
+    public bool vivo = true;
 
     private void Awake() {
         vida = vidaInicial;

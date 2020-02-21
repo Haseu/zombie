@@ -52,7 +52,7 @@ public class ControlaChefe : MonoBehaviour, IDano
     public void dano(int dano)
     {
        status.vida -= dano;
-       if (status.vida <= 0) 
+       if (status.vida <= 0 && status.vivo) 
        {
            this.morrer();
        }
@@ -60,11 +60,12 @@ public class ControlaChefe : MonoBehaviour, IDano
 
     public void morrer()
     {
+        status.vivo = false;
         animacao.morrer();
         movimento.morrer();
         this.enabled = false;
         agente.enabled = false;
-        Destroy(gameObject, 3);
+        Destroy(gameObject, 4);
         Instantiate(kitMedico, transform.position, Quaternion.identity);
     }
 }

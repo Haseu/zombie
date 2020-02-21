@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MovimentoBehaviour : MonoBehaviour
 {
@@ -23,10 +24,18 @@ public class MovimentoBehaviour : MonoBehaviour
 
     public IEnumerator morrer()
     {   
+        NavMeshAgent agente = gameObject.GetComponent<NavMeshAgent>();
+        if(agente)
+        {
+            agente.isStopped = true;
+        }
         rigidbody.isKinematic = false;
+        rigidbody.detectCollisions = false;
         rigidbody.constraints = RigidbodyConstraints.None;
         rigidbody.velocity = Vector3.zero;
-        yield return new WaitForSeconds(1.5f);        
+        rigidbody.useGravity = false;
+        yield return new WaitForSeconds(2f);        
         GetComponent<Collider>().enabled = false;
+        rigidbody.useGravity = true;
     }
 }

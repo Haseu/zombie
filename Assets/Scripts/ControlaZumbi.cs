@@ -107,7 +107,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
     {
         status.vida -= dano;
 
-        if(status.vida <= 0)
+        if(status.vida <= 0 && status.vivo)
         {
             this.morrer();
         }
@@ -115,6 +115,7 @@ public class ControlaZumbi : MonoBehaviour, IDano
 
     public void morrer()
     {
+        status.vivo = false;
         animacao.morrer();
         StartCoroutine(movimento.morrer());
         this.enabled = false;

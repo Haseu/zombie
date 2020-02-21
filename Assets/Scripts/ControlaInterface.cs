@@ -62,7 +62,6 @@ public class ControlaInterface : MonoBehaviour
     public void AtualizarQuantidadeZumbisMortos()
     {
         quantidadeZumbiMortos++;
-        Debug.Log(quantidadeZumbiMortos);
         textoQuantidadeZumbisMortos.text = string.Format("x {0}", quantidadeZumbiMortos);
     }
 }
