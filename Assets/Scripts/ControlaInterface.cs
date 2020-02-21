@@ -44,7 +44,7 @@ public class ControlaInterface : MonoBehaviour
 
     public void reiniciar()
     {
-        SceneManager.LoadScene("Motel");
+        SceneManager.LoadScene("Game");
     }
 
     public void atualizarPontuacao(int min, int seg)
